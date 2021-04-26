@@ -1,6 +1,7 @@
 let cards = ['😂', '🥰', '🤔', '🙂', '😍', '😎', '🤩', '😃'] // emojis
 let cardsdoubled = cards.concat(cards) // doubles the cards
 let board;
+let turned = 1;
 console.log(cardsdoubled)
 
 let init = function () { // init
@@ -18,23 +19,26 @@ let shuffleFunc = function () { // Shuffles the cards, duh
     }
 }
 
-let htmlAdd = function () {
+let htmlAdd = function () { // Adds the funny XD emojis/cards
     for (let i = 0; i < cardsdoubled.length; i++) {
         let div = document.createElement('div')
-        div.innerText = cardsdoubled[i]
+        div.innerText = cardsdoubled[i].substring(0, 2)
         div.className = 'piece hidden'
-        div.id = `piece${i+1}`
-        div.onclick = revealCard
+        // div.id = `piece${i + 1}`
+        div.addEventListener('click', function () { // The clicking and reveal func
+            if (turned > 2) { // basic "dont turn if two cards are turned"
+                const interval = setInterval(function () {
+                    turned = 1
+                    clearInterval(interval)
+                }, 2000)
+            } else {
+                div.classList.toggle('hidden')
+                div.classList.toggle('revealed')
+                turned++;
+            }
+        })
         board.appendChild(div)
     }
 }
-
-let revealCard = function () {
-    let piece = document.getElementById('piece1')
-
-    piece.className = 'piece revealed'
-    board.appendChild(piece)
-}
-
 
 window.onload = init
