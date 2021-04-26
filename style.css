@@ -41,6 +41,14 @@ body {
     padding-right: 38%;
 }
 
+.hidden {
+    color: rgba(0,0,0,0);
+}
+
+.revealed {
+    color: rgba(0,0,0,1);
+}
+
 .piece {
     align-items: center;
     text-align: center;
@@ -55,6 +63,7 @@ body {
 
 .piece:hover {
     opacity: 50%;
+    color: rgba(0,0,0,1);
 }
 
 .fadeinanimate {
