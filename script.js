@@ -134,7 +134,6 @@ let restart = function () {
     target2 = '';
     counter = 0;
     jenomDvakratProsim = false;
-    isEpicWin = false;
     init();
 }
 
